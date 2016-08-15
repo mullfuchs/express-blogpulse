@@ -5,7 +5,26 @@
 </p>
 
 <p><%= post.content %></p>
+<hr />
+
+<% post.comments.forEach(function (comment){ %>
+<h4> <%= comment.author %> sez... </h4>
+<p> <%= comment.content %> </p>
+<% }); %>
 
 <hr />
+
+<form method="POST" action="/posts/<%=post.id%>/comment">
+<label for="comment">Comment</label>
+  <div class="form-group">
+    <label for="author">Author Name: </label>
+    <input type="text" id="author" name="author" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="content">Comment</label>
+    <textarea rows="4" cols="50" id="content" name="content" class="form-control"></textarea>
+  </div>
+<input type="submit" value="Comment" class="btn btn-danger">
+</form>
 
 <a href="/">&larr; Back Home</a>
